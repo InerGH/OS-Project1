@@ -2,9 +2,9 @@
 
 ## Overview
 
-This project simulates an energy-efficient CPU scheduler based on the concept of **Dynamic Voltage and Frequency Scaling (DVFS)**. The goal is to compare how a standard CPU scheduling algorithm (such as Round Robin) performs against a DVFS-enabled scheduler that dynamically adjusts CPU performance levels according to system load. The project demonstrates the trade-off between energy consumption and process turnaround performance.
+This project simulates an energy-efficient CPU scheduler based on the concept of **Dynamic Voltage and Frequency Scaling (DVFS)**. The goal is to compare how a standard CPU scheduling algorithm (Round Robin) performs against a DVFS-enabled scheduler that dynamically adjusts CPU performance levels according to system load. The project demonstrates the trade-off between energy consumption and process turnaround performance.
 
-This work is developed as part of the **Operating Systems** course, focusing on process scheduling, CPU utilization, and energy efficiency.
+This work is developed as part of the **Operating Systems** course, focusing on process scheduling, CPU utilization, and energy efficiency. The project is implemented in **C language** using the **GCC compiler** and tested in **Visual Studio Code** with a terminal-based setup.
 
 ## Objectives
 
@@ -16,11 +16,11 @@ This work is developed as part of the **Operating Systems** course, focusing on 
   * Turnaround time
   * CPU utilization
   * Simulated energy consumption
-* Visualize performance and energy metrics using tables or plots.
+* Display results in the terminal.
 
 ## Concept
 
-DVFS is a power management method that reduces CPU **voltage** and **frequency** during low computational demand. Because CPU power is approximately proportional to `V^2 * f`, reducing these parameters significantly lowers energy use while slightly increasing task completion time. In this project, DVFS is simulated by modeling three CPU operating states:
+DVFS is a power management method that reduces CPU **voltage** and **frequency** during low computational demand. Because CPU power is approximately proportional to V^2 * f, reducing these parameters significantly lowers energy use while slightly increasing task completion time. In this project, DVFS is simulated by modeling three CPU operating states:
 
 | State            | Frequency (f) | Voltage (V) | Relative Power |
 | ---------------- | ------------- | ----------- | -------------- |
@@ -36,20 +36,20 @@ The scheduler transitions between these states depending on the current system l
 
 ## Methodology
 
-1. **Input**: The simulator accepts a set of processes with arrival time, burst time, and (optionally) energy rate.
+1. **Input**: The simulator accepts a set of processes with arrival time and burst time.
 2. **Scheduling**:
 
    * Implement a Round Robin scheduler as the baseline.
    * Implement a Green Scheduler that applies DVFS dynamically during execution.
 3. **Energy Calculation**:
 
-   * Power = `V^2 * f`
-   * Energy = `Power * ExecutionTime`
+   * Power = V^2 * f
+   * Energy = Power * ExecutionTime
    * Burst durations are scaled inversely to frequency (lower frequency means longer execution time).
 4. **Comparison**:
 
    * Measure total energy used, turnaround time, and waiting time.
-   * Produce tabular or graphical comparison results.
+   * Display comparison results in a text-based format.
 
 ## Example Output
 
@@ -62,25 +62,42 @@ The scheduler transitions between these states depending on the current system l
 
 The results illustrate that energy-efficient scheduling can achieve substantial energy savings with minimal performance degradation.
 
-## Tools and Technologies
+## Tools and Environment
 
-* **Programming Language:** Python 3
-* **Libraries:** matplotlib (for visualization), tabulate (for result formatting)
-* **Platform:** Cross-platform (works in any Python environment)
+* **Language:** C (GCC Compiler)
+* **Editor:** Visual Studio Code
+* **Execution:** Terminal-based compilation and testing
+* **Optional Extensions:** C/C++ by Microsoft, Code Runner
+
+### Example Compilation Steps
+
+1. Save the file as main.c.
+2. Compile using GCC:
+
+   bash
+   gcc main.c -o main.exe
+   
+3. Run in terminal:
+
+   bash
+   ./main.exe
+   
+
+If output appears in the terminal, the C environment is correctly configured.
 
 ## Implementation Plan
 
-1. Define a `Process` class (arrival time, burst time, remaining time).
+1. Define a `Process` structure (arrival time, burst time, remaining time).
 2. Create a Round Robin scheduler for baseline comparison.
 3. Implement DVFS logic and integrate it into the scheduler loop.
 4. Collect and compute performance and energy metrics.
-5. Generate tables or charts comparing both approaches.
+5. Print tabular comparison of both approaches.
 
 ## Expected Outcomes
 
 * Demonstration of DVFS concept through software simulation.
 * Quantitative comparison between traditional and energy-efficient scheduling.
-* Visualization of energy-time trade-offs in CPU scheduling.
+* Text-based visualization of energy-time trade-offs in CPU scheduling.
 
 ## Future Work
 
@@ -93,4 +110,5 @@ The results illustrate that energy-efficient scheduling can achieve substantial 
 **Iner Hasanović**
 International University of Sarajevo
 Operating Systems Project – November 2025
+
 
